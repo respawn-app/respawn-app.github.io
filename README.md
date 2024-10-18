@@ -13,5 +13,6 @@ Respawn Team is a startup dedicated to helping people become better.
 ### Get in touch:  
 
 * [hello@respawn.pro](mailto:hello@respawn.pro)
-* [Twitter](https://twitter.com/respawn_app)
 * [Reddit](https://www.reddit.com/r/respawn_app)
+* [Instagram](https://www.instagram.com/respawn_app/)
+* [Discord](https://respawn.pro/discord)
