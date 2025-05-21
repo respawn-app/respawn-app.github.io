@@ -16,7 +16,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--rich-black);
+    background-color: var(--raisin-black); /* Changed to raisin-black */
     color: var(--mint-white);
     font-family: 'Comfortaa', sans-serif;
 }
@@ -47,21 +47,45 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero h1 {
-    font-size: 3.5rem; /* Adjust for responsiveness later */
-    color: var(--mint);
-    margin-bottom: 20px;
+    font-size: 4.5rem; /* Increased size for the gradient text */
+    /* color: var(--mint); Color will be handled by the span */
+    margin-bottom: 0; /* Adjusted for new subheadline */
+    line-height: 1.2;
+    padding-bottom: 0.2em; /* Space for gradient text */
 }
 
-#hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin-bottom: 30px;
-    line-height: 1.6;
+.flowmvi-gradient {
+    background-image: linear-gradient(45deg, var(--mint), var(--celestial-blue), var(--mint));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: flowmviGradientAnimation 5s ease infinite;
+    display: inline-block;
 }
+
+@keyframes flowmviGradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-subheadline {
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: var(--mint-white);
+    font-size: 1.8rem;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    /* text-align: center; will be inherited from #hero */
+    line-height: 1.5; /* Added for better spacing */
+    max-width: 700px; /* Retain similar width constraint */
+}
+
+/* #hero p styling is now .hero-subheadline, no specific #hero p needed unless for other paragraphs */
 
 #cta-flowmvi {
-    background-image: linear-gradient(to right, var(--mint), var(--celestial-blue));
-    color: var(--rich-black);
+    background-color: var(--mint); /* Changed from gradient to solid color */
+    color: var(--rich-black); /* Ensured contrast with mint background */
     padding: 15px 30px;
     text-decoration: none;
     font-size: 1.1rem;
@@ -69,12 +93,14 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     border-radius: 50px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Added background-color to transition */
 }
 
 #cta-flowmvi:hover {
     transform: translateY(-3px);
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+    background-color: var(--celestial-blue); /* Added hover background color change */
+    /* color: var(--mint-white); */ /* Optional: change text color on hover if desired */
 }
 
 /* FlowMVI Features Section Styling */
@@ -98,10 +124,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bento-item {
-    border: 2px solid var(--celestial-blue); /* Using .outlined-box would use --mint, requirement is celestial-blue */
+    border: 2px solid var(--mint); /* Changed border color to --mint */
     border-radius: 20px;
     padding: 25px;
-    background-color: var(--raisin-black);
+    background-color: transparent; /* Changed background to transparent */
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Added border-color to transition */
@@ -110,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
 .bento-item:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.25);
-    border-color: var(--mint);
+    border-color: var(--celestial-blue); /* Changed hover border color to --celestial-blue */
 }
 
 .bento-item h3 {
@@ -129,7 +155,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Other Projects Section Styling */
 #other-projects {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced padding */
     text-align: center;
 }
 
@@ -139,41 +165,25 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--mint);
 }
 
-.staggered-grid {
+.projects-grid { /* Renamed from .staggered-grid */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 900px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Matched bento grid sizing */
+    gap: 20px; /* Matched bento grid gap */
+    max-width: 1200px; /* Optional: adjust to match bento grid if desired, or keep as 900px */
     margin: 0 auto;
 }
 
 .project-item {
-    border: 2px solid var(--celestial-blue); /* Not using .outlined-box as border color is different */
+    border: 2px solid var(--celestial-blue); /* Existing style, aligns with outline concept but different color */
     border-radius: 20px;
-    padding: 25px;
-    background-color: var(--raisin-black);
+    padding: 25px; /* Existing padding, seems reasonable */
+    background-color: transparent; /* Changed background to transparent */
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
     text-align: left;
+    /* Removed margin-top for staggering as it's no longer a staggered grid */
 }
 
-/* Attempting staggered effect - this works best if grid reliably forms two columns.
-   May need media queries for more robust behavior if column count varies a lot. */
-@media (min-width: 630px) { /* Approx when 2 columns start to form based on 300px min + gap */
-    .staggered-grid {
-        grid-template-columns: repeat(2, 1fr); /* Force 2 columns for staggering */
-    }
-    .project-item:nth-child(2n) {
-        margin-top: 40px;
-    }
-}
-
-@media (max-width: 629px) {
-    /* Ensure no top margin on single column layout */
-    .project-item:nth-child(2n) {
-        margin-top: 0;
-    }
-}
-
+/* Removed media queries for staggered effect as they are no longer needed */
 
 .project-item h3 {
     font-size: 1.5rem;
