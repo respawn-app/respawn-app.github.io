@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --mint: #00d46a;
+    --imperial-red: #F71735;
+    --celestial-blue: #0097E9;
+    --raisin-black: #1E1A1D;
+    --rich-black: #0B090A;
+    --mint-white: #F5FFF3;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--rich-black);
+    color: var(--mint-white);
+    font-family: 'Comfortaa', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.outlined-box {
+    border: 2px solid var(--mint);
+    border-radius: 25px; /* Consider adjusting for specific components if needed */
+}
+
+/* Utility class for box shadow, can be applied to elements as needed */
+.box-shadow {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Section Styling */
+#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    min-height: 70vh;
+}
+
+#hero h1 {
+    font-size: 3.5rem; /* Adjust for responsiveness later */
+    color: var(--mint);
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+#cta-flowmvi {
+    background-image: linear-gradient(to right, var(--mint), var(--celestial-blue));
+    color: var(--rich-black);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#cta-flowmvi:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* FlowMVI Features Section Styling */
+#flowmvi-features {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#flowmvi-features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--mint);
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bento-item {
+    border: 2px solid var(--celestial-blue); /* Using .outlined-box would use --mint, requirement is celestial-blue */
+    border-radius: 20px;
+    padding: 25px;
+    background-color: var(--raisin-black);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Added border-color to transition */
+}
+
+.bento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.25);
+    border-color: var(--mint);
+}
+
+.bento-item h3 {
+    font-size: 1.3rem;
+    color: var(--mint-white);
+    margin-bottom: 10px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.bento-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--mint-white);
+    opacity: 0.8;
+}
+
+/* Other Projects Section Styling */
+#other-projects {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#other-projects h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--mint);
+}
+
+.staggered-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.project-item {
+    border: 2px solid var(--celestial-blue); /* Not using .outlined-box as border color is different */
+    border-radius: 20px;
+    padding: 25px;
+    background-color: var(--raisin-black);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    text-align: left;
+}
+
+/* Attempting staggered effect - this works best if grid reliably forms two columns.
+   May need media queries for more robust behavior if column count varies a lot. */
+@media (min-width: 630px) { /* Approx when 2 columns start to form based on 300px min + gap */
+    .staggered-grid {
+        grid-template-columns: repeat(2, 1fr); /* Force 2 columns for staggering */
+    }
+    .project-item:nth-child(2n) {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 629px) {
+    /* Ensure no top margin on single column layout */
+    .project-item:nth-child(2n) {
+        margin-top: 0;
+    }
+}
+
+
+.project-item h3 {
+    font-size: 1.5rem;
+    color: var(--mint-white);
+    margin-bottom: 10px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.project-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.project-item a {
+    color: var(--mint);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid var(--mint);
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-item a:hover {
+    background-color: var(--mint);
+    color: var(--rich-black);
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--raisin-black);
+    margin-top: 60px;
+}
+
+footer p { /* Copyright styling */
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: var(--mint-white);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--mint);
+}

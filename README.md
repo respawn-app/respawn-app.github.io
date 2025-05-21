@@ -1,18 +1,11 @@
-Respawn Team is a startup dedicated to helping people become better.
+# Respawn Open Source Landing Page
 
-### Our Projects
+This repository hosts the source code for the official landing page for Respawn's open-source projects.
 
-* [Respawn](https://respawn.pro) - a modern, gorgeous mobile self-improvement app.
+**View the live landing page at [opensource.respawn.pro](https://opensource.respawn.pro).**
 
-### Our open-source projects:  
+## About Respawn
 
-* [FlowMVI](https://opensource.respawn.pro/FlowMVI) - a multiplatform architectural framework for Kotlin based on a powerful plug-in system
-* [KMMUtils](http://opensource.respawn.pro/kmmutils) - a collection of things that are missing from Kotlin STL and other popular libraries.
-* [ApiResult](https://github.com/respawn-app/ApiResult) - a Kotlin Multiplatform error handling monad similar to kotlin.result, but supercharged with 100+ declarative operators
+Respawn Team is a startup dedicated to helping people become better. Our flagship product is [Respawn](https://respawn.pro), a modern, gorgeous mobile self-improvement app.
 
-### Get in touch:  
-
-* [hello@respawn.pro](mailto:hello@respawn.pro)
-* [Reddit](https://www.reddit.com/r/respawn_app)
-* [Instagram](https://www.instagram.com/respawn_app/)
-* [Discord](https://respawn.pro/discord)
+For inquiries, please contact [hello@respawn.pro](mailto:hello@respawn.pro).
