@@ -9,6 +9,16 @@
     --mint-white: #F5FFF3;
 }
 
+#animated-grid-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Places it behind all other content */
+    display: block; /* Removes any default spacing issues */
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -21,13 +31,21 @@ body {
     font-family: 'Comfortaa', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+h1 {
+    font-family: Montserrat, sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.first-letter-mint {
+    color: var(--mint);
 }
 
 .outlined-box {
     border: 2px solid var(--mint);
-    border-radius: 25px; /* Consider adjusting for specific components if needed */
+    border-radius: 25px;
 }
 
 /* Utility class for box shadow, can be applied to elements as needed */
@@ -56,18 +74,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .flowmvi-gradient {
     background-image: linear-gradient(45deg, var(--mint), var(--celestial-blue), var(--mint));
-    background-size: 200% 200%;
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: flowmviGradientAnimation 5s ease infinite;
+    animation: flowmviGradientAnimation 3s linear infinite;
     display: inline-block;
 }
 
 @keyframes flowmviGradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
 .hero-subheadline {
@@ -112,25 +129,29 @@ h1, h2, h3, h4, h5, h6 {
 #flowmvi-features h2 {
     font-size: 2.5rem;
     margin-bottom: 40px;
-    color: var(--mint);
+    color: var(--mint-white); /* Changed to mint-white */
 }
 
 .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    justify-content: center;
 }
 
 .bento-item {
-    border: 2px solid var(--mint); /* Changed border color to --mint */
+    border: 2px solid var(--mint); 
     border-radius: 20px;
     padding: 25px;
-    background-color: transparent; /* Changed background to transparent */
+    background-color: transparent;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Added border-color to transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    width: 280px;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .bento-item:hover {
@@ -153,24 +174,24 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.8;
 }
 
-/* Other Projects Section Styling */
 #other-projects {
-    padding: 40px 20px; /* Reduced padding */
+    padding: 40px 20px; 
     text-align: center;
 }
 
 #other-projects h2 {
     font-size: 2.5rem;
     margin-bottom: 40px;
-    color: var(--mint);
+    color: var(--mint-white); 
 }
 
-.projects-grid { /* Renamed from .staggered-grid */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Matched bento grid sizing */
-    gap: 20px; /* Matched bento grid gap */
-    max-width: 1200px; /* Optional: adjust to match bento grid if desired, or keep as 900px */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    max-width: 1200px;
     margin: 0 auto;
+    justify-content: center;
 }
 
 .project-item {
@@ -180,7 +201,12 @@ h1, h2, h3, h4, h5, h6 {
     background-color: transparent; /* Changed background to transparent */
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
     text-align: left;
-    /* Removed margin-top for staggering as it's no longer a staggered grid */
+    display: flex; /* Added for flex layout */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Push button to bottom (works with flex-grow on p) */
+    width: 280px;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 /* Removed media queries for staggered effect as they are no longer needed */
@@ -197,17 +223,19 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.6;
     margin-bottom: 15px;
     opacity: 0.8;
+    flex-grow: 1; /* Allow paragraph to take up available space */
 }
 
 .project-item a {
     color: var(--mint);
     text-decoration: none;
     font-weight: bold;
-    display: inline-block;
     padding: 8px 15px;
     border: 1px solid var(--mint);
     border-radius: 50px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    align-self: flex-start;
 }
 
 .project-item a:hover {
@@ -215,11 +243,9 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--rich-black);
 }
 
-/* Footer Styling */
 footer {
     text-align: center;
     padding: 40px 20px;
-    background-color: var(--raisin-black);
     margin-top: 60px;
 }
 
